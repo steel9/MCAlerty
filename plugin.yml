@@ -1,0 +1,42 @@
+name: Alerty
+main: com.steel9.MCAlerty.Main
+author: steel9
+version: 1.0.0
+commands:
+  alerty:
+    description: Base command for this plugin. Use '/alerty get' to view unread alerts.
+    usage: "/alerty"
+
+  alerty get:
+    description: Prints all current unread alerts, with their indexes.
+    usage: "/alerty get"
+
+  alerty get-all:
+    description: Prints all current alerts, including read ones, with their indexes.
+    usage: "/alerty get-all"
+
+  alerty add:
+    description: Adds a new alert for all players.
+    permission: alerty.set
+    usage: "/alerty add <message>"
+
+  alerty update:
+    description: Updates an existing alert with the specified index, which you can find with '/alerty get-all'.
+    permission: alerty.set
+    usage: "/alerty update <index> <new message>"
+
+  alerty remove:
+    description: Removes the alert with the specified index.
+    permission: alerty.set
+    usage: "/alerty remove <index>"
+
+permissions:
+  alerty.*:
+    description: Gives access to all Alerty features
+    default: op
+    children:
+      alerty.set: true
+
+  alerty.set:
+    description: Allows you to add, update or remove alerts
+    default: op
