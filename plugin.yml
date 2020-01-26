@@ -8,12 +8,20 @@ commands:
     usage: "/alerty"
 
   alerty get:
-    description: Prints all current unread alerts, with their indexes.
+    description: Prints your current unread alerts, with their indexes.
     usage: "/alerty get"
 
   alerty get-all:
     description: Prints all current alerts, including read ones, with their indexes.
     usage: "/alerty get-all"
+
+  alerty confirm-read:
+    description: Confirms your unread alerts as read.
+    usage: "/alerty confirm-read"
+
+  alerty cr:
+    description: Same as '/alerty confirm-read'.
+    usage: "/alerty cr"
 
   alerty add:
     description: Adds a new alert for all players.

@@ -51,12 +51,13 @@ public class Main extends JavaPlugin {
 
         if (args.length == 0) {
             sender.sendMessage("Type '/help alerty' for help.");
-            return false;
+
+            return true;
         }
 
         if (args[0].equalsIgnoreCase("get")) {
             if (!(sender instanceof Player)) {
-                String alertsString = getAlertsString(null, "");
+                String alertsString = getAlertsString(null, "", false);
                 if (!alertsString.equals("")) {
                     sender.sendMessage(alertsString);
                 } else {
@@ -67,10 +68,10 @@ public class Main extends JavaPlugin {
             }
 
             Player senderPlayer = (Player)sender;
-            String alertsString = getAlertsString(senderPlayer.getUniqueId(), "");
+            String alertsString = getAlertsString(senderPlayer.getUniqueId(), "", false);
             if (!alertsString.equals("")) {
                 sender.sendMessage(alertsString);
-                updateAlertsRead(this, senderPlayer.getUniqueId());
+                //updateAlertsRead(this, senderPlayer.getUniqueId());
             } else {
                 sender.sendMessage("You have no unread messages. You can view already read messages with '/alerty get-all'");
             }
@@ -78,12 +79,25 @@ public class Main extends JavaPlugin {
             return true;
         }
         else if (args[0].equalsIgnoreCase("get-all")) {
-            String alertsString = getAlertsString(null, "");
+            String alertsString = getAlertsString(null, "", false);
             if (!alertsString.equals("")) {
                 sender.sendMessage(alertsString);
             } else {
                 sender.sendMessage("There are no messages.");
             }
+
+            return true;
+        }
+        else if (args[0].equalsIgnoreCase("confirm-read") || args[0].equalsIgnoreCase("cr")) {
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(ChatColor.RED + "This command can only be executed by a player.");
+                return true;
+            }
+
+            Player senderPlayer = (Player)sender;
+            updateAlertsRead(this, senderPlayer.getUniqueId());
+
+            sender.sendMessage("Your messages are now marked as read.");
 
             return true;
         }
@@ -115,11 +129,11 @@ public class Main extends JavaPlugin {
             saveConfig();
 
             for (Player player : Bukkit.getOnlinePlayers()) {
-                String playerMsg = Main.getAlertsString(player.getUniqueId(), "");
+                String playerMsg = Main.getAlertsString(player.getUniqueId(), "", true);
 
                 if (!playerMsg.equalsIgnoreCase("")) {
                     player.sendMessage(playerMsg);
-                    Main.updateAlertsRead(this, player.getUniqueId());
+                    //Main.updateAlertsRead(this, player.getUniqueId());
                 }
             }
 
@@ -212,6 +226,7 @@ public class Main extends JavaPlugin {
         }
         else {
             sender.sendMessage("Unknown command. Type '/help alerty' for help.");
+
             return false;
         }
     }
@@ -242,9 +257,11 @@ public class Main extends JavaPlugin {
     /**
      * Gets all alerts for a specific player, or also read messages, ready to be sent.
      * @param playerID The UUID of the player to get alerts for. Null to get all alerts.
+     * @param welcomeMsg The welcome message to be shown, if any.
+     * @param askToConfirm True if the user should be prompted, to confirm the messages as read.
      * @return Returns the alerts as a string.
      */
-    public static String getAlertsString(UUID playerID, String welcomeMsg) {
+    public static String getAlertsString(UUID playerID, String welcomeMsg, boolean askToConfirm) {
         ArrayList<Alert> alerts = (ArrayList<Alert>)config.get("alerts");
         int unreadAlertsCount = getUnreadAlertsCount(playerID);
 
@@ -284,6 +301,10 @@ public class Main extends JavaPlugin {
         }
 
         joinMessage.append(ChatColor.AQUA + "\n==============================\n");
+
+        if (askToConfirm) {
+            joinMessage.append(ChatColor.GOLD + "Confirm the messages as read with '/alerty confirm-read' or '/alerty cr'.");
+        }
 
         return joinMessage.toString();
     }

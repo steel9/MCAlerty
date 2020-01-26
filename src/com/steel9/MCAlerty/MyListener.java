@@ -16,11 +16,11 @@ public class MyListener implements Listener {
 
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
-        String msg = Main.getAlertsString(event.getPlayer().getUniqueId(), "Welcome!");
+        String msg = Main.getAlertsString(event.getPlayer().getUniqueId(), "Welcome!", true);
 
         if (!msg.equalsIgnoreCase("")) {
             event.getPlayer().sendMessage(msg);
-            Main.updateAlertsRead(mPlugin, event.getPlayer().getUniqueId());
+            //Main.updateAlertsRead(mPlugin, event.getPlayer().getUniqueId());
         }
     }
 }
