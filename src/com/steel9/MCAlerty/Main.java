@@ -227,7 +227,7 @@ public class Main extends JavaPlugin {
         else {
             sender.sendMessage("Unknown command. Type '/help alerty' for help.");
 
-            return false;
+            return true;
         }
     }
 
