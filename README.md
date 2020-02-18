@@ -8,3 +8,7 @@ Ever wanted to broadcast important information to all players, even if they are 
 2. Download 'Alerty.jar' from the latest stable release.
 3. Put the downloaded file in the 'plugins' folder.
 4. Done!
+   
+## Usage
+Type '/help alerty' to get a list of available commands.   
+To get syntax for a specific command, type '/help alerty \<command\>', for example '/help alerty add'.
