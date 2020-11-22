@@ -303,7 +303,10 @@ public class Main extends JavaPlugin {
         joinMessage.append(ChatColor.AQUA + "\n==============================\n");
 
         if (askToConfirm) {
-            joinMessage.append(ChatColor.GOLD + "Confirm the messages as read with '/alerty confirm-read' or '/alerty cr'.");
+            joinMessage.append(ChatColor.GOLD + "Confirm the messages as read with "
+                    + ChatColor.AQUA + "/alerty cr "
+                    + ChatColor.GOLD + "or "
+                    + ChatColor.AQUA + "/alerty confirm-read");
         }
 
         return joinMessage.toString();
