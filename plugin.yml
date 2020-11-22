@@ -1,7 +1,7 @@
 name: Alerty
 main: com.steel9.MCAlerty.Main
 author: steel9
-version: 1.0.0
+version: 1.0.1
 commands:
   alerty:
     description: Base command for this plugin. Use '/alerty get' to view unread alerts.
@@ -15,13 +15,13 @@ commands:
     description: Prints all current alerts, including read ones, with their indexes.
     usage: "/alerty get-all"
 
-  alerty confirm-read:
-    description: Confirms your unread alerts as read.
-    usage: "/alerty confirm-read"
-
   alerty cr:
-    description: Same as '/alerty confirm-read'.
+    description: Confirms your unread alerts as read.
     usage: "/alerty cr"
+
+  alerty confirm-read:
+    description: Confirms your unread alerts as read. (Same as '/alerty cr')
+    usage: "/alerty confirm-read"
 
   alerty add:
     description: Adds a new alert for all players.
