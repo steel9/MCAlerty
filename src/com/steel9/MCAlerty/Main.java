@@ -50,7 +50,7 @@ public class Main extends JavaPlugin {
         }
 
         if (args.length == 0) {
-            sender.sendMessage("Type '/help alerty' for help.");
+            sender.sendMessage("Type " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
 
             return true;
         }
@@ -73,7 +73,7 @@ public class Main extends JavaPlugin {
                 sender.sendMessage(alertsString);
                 //updateAlertsRead(this, senderPlayer.getUniqueId());
             } else {
-                sender.sendMessage("You have no unread messages. You can view already read messages with '/alerty get-all'");
+                sender.sendMessage("You have no unread messages. You can view already read messages with " + ChatColor.AQUA + "/alerty get-all");
             }
 
             return true;
@@ -111,7 +111,7 @@ public class Main extends JavaPlugin {
             }
 
             if (args.length < 2) {
-                sender.sendMessage(ChatColor.RED + "Invalid syntax: Insufficient parameter count.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid syntax: Insufficient parameter count.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
@@ -151,7 +151,7 @@ public class Main extends JavaPlugin {
             }
 
             if (args.length < 3) {
-                sender.sendMessage(ChatColor.RED + "Invalid syntax: Insufficient parameter count.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid syntax: Insufficient parameter count.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
@@ -160,13 +160,13 @@ public class Main extends JavaPlugin {
                 index = Integer.parseInt(args[1]);
             }
             catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "Invalid index: Index must be an Integer.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid index: Index must be an Integer.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
             ArrayList<Alert> alerts = (ArrayList<Alert>)config.get("alerts");
             if (index < 0 || index >= alerts.size()) {
-                sender.sendMessage(ChatColor.RED + "Invalid index: Alert with specified index does not exist.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid index: Alert with specified index does not exist.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
@@ -197,7 +197,7 @@ public class Main extends JavaPlugin {
             }
 
             if (args.length != 2) {
-                sender.sendMessage(ChatColor.RED + "Invalid syntax: Invalid parameter count.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid syntax: Invalid parameter count.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
@@ -206,13 +206,13 @@ public class Main extends JavaPlugin {
                 index = Integer.parseInt(args[1]);
             }
             catch (NumberFormatException e) {
-                sender.sendMessage(ChatColor.RED + "Invalid index: Index must be an Integer.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid index: Index must be an Integer.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
             ArrayList<Alert> alerts = (ArrayList<Alert>)config.get("alerts");
             if (index < 0 || index >= alerts.size()) {
-                sender.sendMessage(ChatColor.RED + "Invalid index: Alert with specified index does not exist.\nType '/help alerty' for help.");
+                sender.sendMessage(ChatColor.RED + "Invalid index: Alert with specified index does not exist.\nType " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
                 return true;
             }
 
@@ -225,7 +225,7 @@ public class Main extends JavaPlugin {
             return true;
         }
         else {
-            sender.sendMessage("Unknown command. Type '/help alerty' for help.");
+            sender.sendMessage("Unknown command. Type " + ChatColor.AQUA + "/help alerty" + ChatColor.WHITE + " for help.");
 
             return true;
         }
